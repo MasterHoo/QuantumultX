@@ -1,8 +1,9 @@
 [rewrite_local]
-# 强制让 AppLovin 和 Fyber 广告请求返回空数据，直接跳过弹窗判定
-^https?:\/\/.*\.applovin\.com\/.*$ url response-body ""
-^https?:\/\/.*\.applvn\.com\/.*$ url response-body ""
-^https?:\/\/.*\.fyber\.com\/.*$ url response-body ""
+# 强制让广告请求返回空数据，直接骗过游戏跳过弹窗
+^https?:\/\/.*\.applovin\.com\/.*$ url reject-200
+^https?:\/\/.*\.applvn\.com\/.*$ url reject-200
+^https?:\/\/.*\.fyber\.com\/.*$ url reject-200
 
 [mitm]
+# 必须配置主机名解密，重写才会生效
 hostname = *.applovin.com, *.applvn.com, *.fyber.com
